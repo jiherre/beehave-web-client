@@ -3,14 +3,9 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 import { inject as service } from '@ember/service';
 
 export default Route.extend(AuthenticatedRouteMixin, {
-  ajax: service(),
-  session: service(),
+  store: service(),
 
   model() {
-    const headers = {};
-    this.session.authorize('authorizer:github', (headerName, headerValue) => {
-      headers[headerName] = headerValue;
-    });
-    return this.ajax.request('http://localhost:3000/projects', { headers });
+    return this.store.findAll('project');
   }
 });
