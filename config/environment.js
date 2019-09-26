@@ -20,6 +20,19 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    torii: {
+      sessionServiceName: 'session',
+      allowUnsafeRedirect: true,
+      providers: {
+        'github-oauth2': {
+          apiKey: "7f026a219b30b86d64fa",
+          redirectUri: "http://localhost:4200/oauth2",
+          scope: 'user',
+          tokenExchangeUri: "http://localhost:3000/token"
+        }
+      }
     }
   };
 
