@@ -1,8 +1,25 @@
-{{#if session.isAuthenticated}}
-    Authenticated
-    <button {{action "logout"}}>log out</button>
-{{else}}
-    Unauthenticated
-{{/if}}
+{{#bulma-section}}
+  {{#bulma-container}}
+    {{#bulma-columns}}
+      {{#if session.isAuthenticated}}
+        {{#bulma-column isOneQuarter=true}}
+          {{#bulma-menu}}
+            {{#bulma-menu-list label="Workshop"}}
+              <li><a>Features</a></li>
+              <li><a>Repository</a></li>
+            {{/bulma-menu-list}}
 
-{{outlet}}
+            {{#bulma-menu-list label="User"}}
+              <li><a {{action "logout"}}>Log out</a></li>
+            {{/bulma-menu-list}}
+
+          {{/bulma-menu}}
+        {{/bulma-column}}
+      {{/if}}
+
+      {{#bulma-column}}
+        {{outlet}}
+      {{/bulma-column}}
+    {{/bulma-columns}}
+  {{/bulma-container}}
+{{/bulma-section}}

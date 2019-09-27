@@ -6,6 +6,5 @@ export default Route.extend(AuthenticatedRouteMixin, {
   store: service(),
 
   model() {
-    return this.store.findAll('project');
   }
 });

@@ -1,1 +1,6 @@
-<button {{action "login"}}>GitHub</button>
+{{#bulma-columns}}
+  {{#bulma-column isHalf=true isOffsetOneQuarter=true}}
+    <h1 class="title">Connect to BeeHave</h1>
+    {{bulma-button isInfo=true icon="fa fa-github" label="Github" onmousedown=(action "login")}}
+  {{/bulma-column}}
+{{/bulma-columns}}
