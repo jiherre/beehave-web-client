@@ -1,0 +1,37 @@
+{{#bulma-columns}}
+  {{#bulma-column is11=true}}
+    <h1 class="title">Workshop</h1>
+  {{/bulma-column}}
+  {{#bulma-column}}
+    {{bulma-button isPrimary=true label="Create" onmousedown=(action "toggleCreationModal")}}
+
+    {{#bulma-modal show=showCreationModal onclose=(if showCreationModal (action 'toggleCreationModal'))}}
+      <div class="box content">
+        <h2 class="title">Create a feature</h2>
+        {{#bulma-control}}
+          {{bulma-input
+            placeholder="New feature name"
+            oninput=(action (mut newFeatureName) value="target.value")
+          }}
+        {{/bulma-control}}
+
+        {{#bulma-control}}
+          {{bulma-button isPrimary=true  disabled=(not newFeatureName) label="Submit" onmousedown=(action "createFeature")}}
+          {{bulma-button label="Cancel" onmousedown=(action "toggleCreationModal")}}
+        {{/bulma-control}}
+      </div>
+    {{/bulma-modal}}
+  {{/bulma-column}}
+{{/bulma-columns}}
+
+{{#bulma-section}}
+  <ul>
+    {{#each features as |feature|}}
+      <li>
+        <LinkTo @route="features.show" @model={{feature}}>
+          {{feature.name}}
+        </LinkTo>
+      </li>
+    {{/each}}
+  </ul>
+{{/bulma-section}}

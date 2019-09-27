@@ -4,8 +4,10 @@
       {{#if session.isAuthenticated}}
         {{#bulma-column isOneQuarter=true}}
           {{#bulma-menu}}
-            {{#bulma-menu-list label="Workshop"}}
-              <li><a>Features</a></li>
+            {{#bulma-menu-list label="Features"}}
+              <li>
+                <LinkTo @route="features">Workshop</LinkTo>
+              </li>
               <li><a>Repository</a></li>
             {{/bulma-menu-list}}
 
@@ -17,7 +19,7 @@
         {{/bulma-column}}
       {{/if}}
 
-      {{#bulma-column}}
+      {{#bulma-column isThreeQuarters=true}}
         {{outlet}}
       {{/bulma-column}}
     {{/bulma-columns}}
