@@ -4,7 +4,28 @@
   {{/bulma-column}}
 {{/bulma-columns}}
 
+
+{{#bulma-nav}}
+  {{#bulma-nav-left}}
+    <span class="nav-item">
+      <h2 class="subtitle">Gherkin</h2>
+    </span>
+  {{/bulma-nav-left}}
+
+  {{#bulma-nav-right isMenu=true}}
+    <span class="nav-item">
+      {{bulma-button
+          isPrimary=true
+          label="Save"
+          disabled=(not isGherkinChanged)
+          onmousedown=(action "save")}}
+    </span>
+  {{/bulma-nav-right}}
+{{/bulma-nav}}
+
 {{#bulma-section}}
-  <h2 class="title">Gherkin Feature</h2>
-  {{feature.content}}
+  {{ember-ace minLines=10
+              maxLines=50
+              value=feature.content
+              update=(action (mut feature.content))}}
 {{/bulma-section}}
