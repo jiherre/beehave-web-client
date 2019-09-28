@@ -19,6 +19,10 @@
           label="Save"
           disabled=(not isGherkinChanged)
           onmousedown=(action "save")}}
+
+      {{bulma-button
+          label="Push"
+          onmousedown=(action "pushToGit")}}
     </span>
   {{/bulma-nav-right}}
 {{/bulma-nav}}
