@@ -6,13 +6,15 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
   ajax: service(),
 
-  isGherkinChanged: computed('feature.hasDirtyAttributes', 'feature.content', function () {
+  isGherkinChanged: computed('feature.content', function () {
     return isPresent(this.feature.changedAttributes().content)
   }),
 
   actions: {
     save() {
-      this.feature.save()
+      this.feature.save().then(() => {
+        this.notifyPropertyChange('isGherkinChanged')
+      })
     },
 
     pushToGit() {
