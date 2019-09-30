@@ -11,10 +11,11 @@ export default Component.extend({
   didReceiveAttrs() {
     this._super(...arguments)
     this.store.findAll('feature')
+    this.set('features', this.store.peekAll('feature'))
   },
 
-  features: computed(function () {
-    return this.store.peekAll('feature')
+  filteredFeatures: computed('features.[]', function () {
+    return this.features.filterBy('isDeleted', false)
   }),
 
   actions: {
