@@ -13,6 +13,10 @@ Router.map(function () {
   this.route('features', function () {
     this.route('show', { path: '/:feature_id' });
   });
+
+  this.route('repository', function () {
+    this.route('feature-file', { path: '/:feature-file_id' });
+  });
 });
 
 export default Router;

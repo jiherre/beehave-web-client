@@ -21,7 +21,8 @@
           onmousedown=(action "save")}}
 
       {{bulma-button
-          label="Push"
+          label="Share"
+          disabled=isGherkinChanged
           onmousedown=(action "pushToGit")}}
     </span>
   {{/bulma-nav-right}}
@@ -32,4 +33,16 @@
               maxLines=50
               value=feature.content
               update=(action (mut feature.content))}}
+{{/bulma-section}}
+
+{{#bulma-section}}
+  <h2>Search steps</h2>
+
+  <Input @value={{searchQuery}} />
+
+  <ul>
+    {{#each searchResults as |res|}}
+      <li>{{res.name}}</li>
+    {{/each}}
+  </ul>
 {{/bulma-section}}

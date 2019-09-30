@@ -1,0 +1,21 @@
+{{#bulma-columns}}
+  {{#bulma-column is9=true}}
+    <h1 class="title">Repository</h1>
+  {{/bulma-column}}
+{{/bulma-columns}}
+
+{{#bulma-section}}
+  <strong>Path:</strong> jracenet/hps-behat/features/beehave
+{{/bulma-section}}
+
+{{#bulma-section}}
+  <ul>
+    {{#each fileList as |file|}}
+      <li>
+        <LinkTo @route="repository.feature-file" @model={{file.sha}}>
+          {{file.name}}
+        </LinkTo>
+      </li>
+    {{/each}}
+  </ul>
+{{/bulma-section}}

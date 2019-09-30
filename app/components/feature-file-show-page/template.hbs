@@ -1,0 +1,23 @@
+{{#bulma-columns}}
+  {{#bulma-column is11=true}}
+    <h1 class="title">{{feature.name}}</h1>
+  {{/bulma-column}}
+{{/bulma-columns}}
+
+{{#if gherkinContent}}
+  {{#bulma-nav-right isMenu=true}}
+    <span class="nav-item">
+      {{bulma-button
+          isPrimary=true
+          label="Edit"
+          onmousedown=(action "edit")}}
+    </span>
+  {{/bulma-nav-right}}
+
+  {{#bulma-section}}
+    {{ember-ace minLines=10
+                maxLines=50
+                value=gherkinContent
+                readOnly=true}}
+  {{/bulma-section}}
+{{/if}}
